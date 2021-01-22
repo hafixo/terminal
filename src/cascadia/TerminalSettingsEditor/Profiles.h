@@ -21,9 +21,6 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
 
         bool UseDesktopBGImage();
         void UseDesktopBGImage(const bool useDesktop);
-        bool UseParentProcessDirectory();
-        void UseParentProcessDirectory(const bool useParent);
-        bool UseCustomStartingDirectory();
         bool BackgroundImageSettingsVisible();
 
         GETSET_PROPERTY(bool, IsBaseLayer, false);
@@ -70,7 +67,6 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
     private:
         Model::Profile _profile;
         winrt::hstring _lastBgImagePath;
-        winrt::hstring _lastStartingDirectoryPath;
     };
 
     struct DeleteProfileEventArgs :
@@ -125,6 +121,8 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
         fire_and_forget Icon_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
         void BIAlignment_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
         void DeleteConfirmation_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
+        void UseParentProcessDirectory_Check(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
+        void UseParentProcessDirectory_Uncheck(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
 
         // CursorShape visibility logic
         void CursorShape_Changed(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
